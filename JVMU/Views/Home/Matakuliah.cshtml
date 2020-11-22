@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Mata Kuliah";
+}
+
+<div>
+    @foreach (var matkuls in ViewBag.matakuliahlist)
+    {
+    <div>
+        <a asp-controller="Home" asp-action="Detail" asp-route-id="@matkuls.MatKulID">
+            <div>@matkuls.NamaMatkul</div>
+            <div>@matkuls.Pengampu</div>
+            <br />
+        </a>
+    </div>
+
+
+    }
+    @*<form asp-controller="Home" asp-action="UploadFile" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <button type="submit">Upload File</button>
+    </form>
+    <h1><a asp-controller="Home" asp-action="Download" asp-route-filename="KRS_TTD.pdf">download</a></h1>*@
+</div>

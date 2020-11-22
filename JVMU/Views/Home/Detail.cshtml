@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Mata Kuliah Detail";
+}
+
+<div>
+    @foreach (var matkuls in ViewBag.matakuliahdetaillist)
+    {
+    <div>
+
+        <div>@matkuls.JudulMateri</div>
+        <div>@matkuls.DeskripsiMateri</div>
+        <a asp-controller="Home" asp-action="Download" asp-route-filename="@matkuls.LinkMateri"><div>Download Materi</div></a>
+        <br />
+    </div>
+    }
+</div>
