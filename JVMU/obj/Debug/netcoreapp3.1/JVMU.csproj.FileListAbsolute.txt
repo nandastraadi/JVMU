@@ -59,3 +59,5 @@ C:\Users\AxiooHNM\source\repos\JVMU\JVMU\bin\Debug\netcoreapp3.1\runtimes\unix\l
 C:\Users\AxiooHNM\source\repos\JVMU\JVMU\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\Users\AxiooHNM\source\repos\JVMU\JVMU\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\AxiooHNM\source\repos\JVMU\JVMU\obj\Debug\netcoreapp3.1\Razor\Views\Home\Detail.cshtml.g.cs
+C:\Users\AxiooHNM\source\repos\JVMU\JVMU\obj\Debug\netcoreapp3.1\Razor\Views\Home\Upload.cshtml.g.cs
+C:\Users\AxiooHNM\source\repos\JVMU\JVMU\obj\Debug\netcoreapp3.1\Razor\Views\Home\Create.cshtml.g.cs

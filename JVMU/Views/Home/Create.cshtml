@@ -1,0 +1,35 @@
+﻿@model JVMU.Models.MatakuliahModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+@*<form asp-controller="Home" asp-action="UploadFile" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button type="submit">Upload File</button>
+</form>*@
+<form asp-controller="Home" asp-action="Create" method="post" enctype="multipart/form-data">
+    @*<div style="color: red;" asp-validation-summary="All"></div>*@
+    @*<label asp-for="FullName"></label>*@
+    @*<select asp-for="NamaMatkul">
+        <option selected disabled>Select MataKuliah</option>
+        @foreach (var matkuls in ViewBag.matakuliahidlist)
+        {
+            <option value=@matkuls.MatKulID>@matkuls.NamaMatkul</option>
+        }
+    </select>*@
+    @*<span style="color: red;" asp-validation-for="FullName"></span>*@
+    <br />
+    @*<label asp-for="Email"></label>*@
+    <label asp-for="NamaMatkul">Matakuliah : </label>
+    <input asp-for="NamaMatkul" />
+    @*<span style="color: red;" asp-validation-for="Email"></span>*@
+    <br />
+    @*<label asp-for="Birthdate"></label>*@
+    <label asp-for="Pengampu">Pengampu : </label>
+    <input asp-for="Pengampu" />
+    @*<span style="color: red;" asp-validation-for="Birthdate"></span>*@
+    <br />
+    @*<input type="file" name="file" asp-for="LinkMateri" />
+    <br />*@
+    <input type="submit" value="Upload" />
+</form>

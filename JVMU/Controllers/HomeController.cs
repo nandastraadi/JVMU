@@ -11,13 +11,14 @@ using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using Microsoft.AspNetCore.Http;
 using System.IO;
-using System.IO;
+using System.Data;
 
 namespace JVMU.Controllers
 {
     public class HomeController : Controller
     {
         //private readonly ILogger<HomeController> _logger;
+        private SqlConnection conn;
         public IConfiguration Configuration { get; }
         public HomeController(IConfiguration configuration)
         {
@@ -39,29 +40,6 @@ namespace JVMU.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        //public IActionResult Matakuliah()
-        //{
-        //    var matakuliahs = new List<Models.Matakuliah>();
-
-        //    matakuliahs.Add(new Models.Matakuliah
-        //    {
-        //        MatKulID = 1,
-        //        NamaMatkul = "Elektronika Analog",
-        //        Pengampu = "Prapto Nugroho"
-        //    });
-
-        //    matakuliahs.Add(new Models.Matakuliah
-        //    {
-        //        MatKulID = 2,
-        //        NamaMatkul = "Elektronika Dasar",
-        //        Pengampu = "Prapto Nugroho"
-        //    });
-
-        //    ViewBag.matakuliahlist = matakuliahs;
-        //    return View();
-        //}
-        //[Route("Matakuliah")]
         public IActionResult Matakuliah()
         {
             string constr = Configuration["ConnectionStrings:conString"];
@@ -119,31 +97,78 @@ namespace JVMU.Controllers
             return View();
         }
 
-        //[HttpGet("download")]
-        //public IActionResult GetBlobDownload(string link)
-        //{
-        //    var net = new System.Net.WebClient();
-        //    var data = net.DownloadData(link);
-        //    var content = new System.IO.MemoryStream(data);
-        //    var contentType = "APPLICATION/octet-stream";
-        //    var fileName = "something.bin";
-        //    return File(content, contentType, fileName);
-        //}
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         [HttpPost]
-        public async Task<IActionResult> UploadFile(IFormFile file)
+        public async Task<IActionResult> Create (MatakuliahModel obj)
         {
-            if (file == null || file.Length == 0)
-                return Content("file not selected");
+            string constr = Configuration["ConnectionStrings:conString"];
+            conn = new SqlConnection(constr);
+            SqlCommand command = new SqlCommand("Matkul_List", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@NamaMatkul", obj.NamaMatkul);
+            command.Parameters.AddWithValue("@Pengampu", obj.Pengampu);
+            conn.Open();
+            int i = command.ExecuteNonQuery();
+            conn.Close();
+            return RedirectToAction("Matakuliah");
+        }
+
+        public IActionResult Upload()
+        {
+            string constr = Configuration["ConnectionStrings:conString"];
+            var matakuliahids = new List<Models.MatakuliahModel>();
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                con.Open();
+                string query = "SELECT MatKulID,NamaMatkul FROM Matakuliah";
+                SqlCommand command = new SqlCommand(query, con);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        matakuliahids.Add(new MatakuliahModel
+                        {
+                            MatKulID = (int)reader["MatKulID"],
+                            NamaMatkul = reader["NamaMatkul"].ToString(),
+                        });
+                    }
+                }
+                con.Close();
+            }
+            ViewBag.matakuliahidlist = matakuliahids;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadFile(IFormFile file,MatakuliahDetail obj)
+        {
 
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", file.FileName);
+            string constr = Configuration["ConnectionStrings:conString"];
+            conn = new SqlConnection(constr);
+            
+            
+            //string query = "SELECT MatKulID,NamaMatkul FROM Matakuliah";
+            SqlCommand command = new SqlCommand("Materi_List", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@MatKulID", obj.MatKulID);
+            command.Parameters.AddWithValue("@JudulMateri", obj.JudulMateri);
+            command.Parameters.AddWithValue("@DeskripsiMateri", obj.DeskripsiMateri);
+            command.Parameters.AddWithValue("@LinkMateri", file.FileName);
+            conn.Open();
+            int i = command.ExecuteNonQuery();
+            conn.Close();
 
             using (var stream = new FileStream(path, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
             }
 
-            return RedirectToAction("Files");
+            return RedirectToAction("Matakuliah");
         }
 
         public async Task<IActionResult> Download(string filename)
@@ -185,7 +210,14 @@ namespace JVMU.Controllers
                 {".gif", "image/gif"},  
                 {".csv", "text/csv"}  
             };  
-        } 
+        }
+        
+
+
+
+
+
+
 
     }
 }
