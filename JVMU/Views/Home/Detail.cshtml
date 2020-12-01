@@ -1,16 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Mata Kuliah Detail";
+    var id = ViewBag.matakuliahdetaillist?[0]?.MatKulID;
 }
 
 <div>
     @foreach (var matkuls in ViewBag.matakuliahdetaillist)
     {
-    <div>
+        <div>
 
-        <div>@matkuls.JudulMateri</div>
-        <div>@matkuls.DeskripsiMateri</div>
-        <a asp-controller="Home" asp-action="Download" asp-route-filename="@matkuls.LinkMateri"><div>Download Materi</div></a>
-        <br />
-    </div>
+            <div>@matkuls.JudulMateri</div>
+            <div>@matkuls.DeskripsiMateri</div>
+            <a asp-controller="Home" asp-action="Download" asp-route-filename="@matkuls.LinkMateri"><div>Download Materi</div></a>
+            <br />
+        </div>
     }
+    <a asp-controller="Home" asp-action="Upload" asp-route-id="@id"><div>Upload Materi</div></a>
 </div>

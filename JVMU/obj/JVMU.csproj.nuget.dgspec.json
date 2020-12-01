@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AxiooHNM\\source\\repos\\JVMU\\JVMU\\JVMU.csproj": {}
+    "C:\\Users\\Nandastra Adi\\Documents\\Kuliah\\Web Development\\JVMU\\JVMU\\JVMU.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AxiooHNM\\source\\repos\\JVMU\\JVMU\\JVMU.csproj": {
+    "C:\\Users\\Nandastra Adi\\Documents\\Kuliah\\Web Development\\JVMU\\JVMU\\JVMU.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AxiooHNM\\source\\repos\\JVMU\\JVMU\\JVMU.csproj",
+        "projectUniqueName": "C:\\Users\\Nandastra Adi\\Documents\\Kuliah\\Web Development\\JVMU\\JVMU\\JVMU.csproj",
         "projectName": "JVMU",
-        "projectPath": "C:\\Users\\AxiooHNM\\source\\repos\\JVMU\\JVMU\\JVMU.csproj",
-        "packagesPath": "C:\\Users\\AxiooHNM\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AxiooHNM\\source\\repos\\JVMU\\JVMU\\obj\\",
+        "projectPath": "C:\\Users\\Nandastra Adi\\Documents\\Kuliah\\Web Development\\JVMU\\JVMU\\JVMU.csproj",
+        "packagesPath": "C:\\Users\\Nandastra Adi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nandastra Adi\\Documents\\Kuliah\\Web Development\\JVMU\\JVMU\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\AxiooHNM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nandastra Adi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +26,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -38,7 +37,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
@@ -67,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

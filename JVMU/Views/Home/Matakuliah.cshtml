@@ -1,5 +1,7 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Mata Kuliah";
+    
 }
 
 <div>
@@ -9,6 +11,10 @@
         <a asp-controller="Home" asp-action="Detail" asp-route-id="@matkuls.MatKulID">
             <div>@matkuls.NamaMatkul</div>
             <div>@matkuls.Pengampu</div>
+            
+        </a>
+        <a asp-controller="Home" asp-action="Update" asp-route-id="@matkuls.MatKulID">
+            <div>Update</div>
             <br />
         </a>
     </div>

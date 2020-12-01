@@ -1,0 +1,20 @@
+﻿@model JVMU.Models.MatakuliahModel
+@{
+    ViewData["Title"] = "Update";
+}
+
+@foreach (var matkuls in ViewBag.matakuliahupdate)
+{
+    <form asp-controller="Home" asp-action="Update" method="post" enctype="multipart/form-data" asp-route-id="@matkuls.MatKulID">
+
+        <label asp-for="MatKulID">Id : </label>
+        <input asp-for="MatKulID" readonly type="text" placeholder=@matkuls.MatKulID />
+        <br />
+        <label asp-for="NamaMatkul">Nama Matakuliah : </label>
+        <input asp-for="NamaMatkul" type="text" value=@matkuls.NamaMatkul />
+        <br />
+        <input type="submit" value="Update" />
+
+    </form>
+}
+
